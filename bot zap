@@ -1,0 +1,23 @@
+from twilio.rest import Client
+import time
+
+# Credenciais da sua conta Twilio
+account_sid = 'sua_account_sid'
+auth_token = 'seu_auth_token'
+
+# Inicialize o cliente Twilio
+client = Client(account_sid, auth_token)
+
+# Função para enviar mensagem
+def enviar_mensagem(numero, mensagem):
+    message = client.messages.create(
+        body=mensagem,
+        from_='seu_numero_do_whatsapp_twilio',
+        to='whatsapp:' + numero
+    )
+    print(f"Mensagem enviada para {numero}: {message.sid}")
+
+# Lista de números de telefone dos clientes
+clientes = [
+    '+5511987654321',  # Substitua pelo número do cliente
+    '+5511987654322',  # Substitua
